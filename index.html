@@ -70,6 +70,27 @@
       .bar { background: var(--accent); color: #fff; text-align: center; padding: 13px 16px; font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: .02em; }
       .bar strong { color: var(--yellow); }
 
+      /* Black Friday countdown bar */
+      .bf-bar { background: #1d0a12; color: #fff; padding: 16px 16px 18px; text-align: center; border-bottom: 4px solid var(--yellow); }
+      .bf-inner { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 22px; }
+      .bf-title { font-size: clamp(22px, 4.5vw, 32px); font-weight: 900; text-transform: uppercase; letter-spacing: .01em; line-height: 1; }
+      .bf-title .y { color: var(--yellow); }
+      .bf-prices { display: inline-flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center; }
+      .bf-was { font-size: 24px; font-weight: 800; color: #ffb3c6; text-decoration: line-through; text-decoration-thickness: 3px; }
+      .bf-now { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; color: var(--yellow); line-height: 1; }
+      .bf-off { display: inline-block; background: var(--accent); color: #fff; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; padding: 6px 12px; border-radius: 999px; border: 2px solid #fff; }
+      .bf-count { display: inline-flex; gap: 8px; align-items: stretch; }
+      .bf-unit { background: #fff; color: #1d0a12; border-radius: 8px; min-width: 62px; padding: 7px 8px 6px; text-align: center; }
+      .bf-unit b { display: block; font-size: 26px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+      .bf-unit span { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); margin-top: 3px; }
+      .bf-ends { width: 100%; font-size: 14px; font-weight: 700; color: #ffd3e0; margin: 2px 0 0; }
+      .bf-ends strong { color: #fff; }
+      .bf-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 11px 22px; border-radius: 8px; background: var(--yellow); color: #1d0a12; font-weight: 900; font-size: 17px; text-transform: uppercase; text-decoration: none; border: 2px solid #fff; }
+      .bf-cta:active { transform: scale(.98); }
+      @media (max-width: 560px) { .bf-unit { min-width: 56px; } .bf-unit b { font-size: 23px; } .bf-now { font-size: 34px; } }
+      .price-was { font-size: 30px; font-weight: 800; color: var(--ink-soft); text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: var(--accent); }
+      .off-badge { display: inline-block; background: var(--ink); color: var(--yellow); font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .04em; padding: 6px 12px; border-radius: 999px; }
+
       /* Brand header */
       .brand-bar { display: flex; align-items: center; gap: 14px; padding: 18px 0 0; }
       .brand-bar img { width: 58px; height: 58px; object-fit: cover; border-radius: 14px; border: 3px solid var(--ink); box-shadow: 4px 4px 0 var(--accent-soft); flex: none; }
@@ -328,6 +349,20 @@
   </head>
   <body>
 
+    <div class="bf-bar" aria-label="Black Friday sale">
+      <div class="bf-inner">
+        <span class="bf-title">Black <span class="y">Friday</span> Sale</span>
+        <span class="bf-prices"><span class="bf-was" aria-label="Was $79">$79</span><span class="bf-now">$49.99</span><span class="bf-off">37% OFF</span></span>
+        <div class="bf-count" role="timer" aria-label="Time left in the Black Friday sale">
+          <div class="bf-unit"><b id="bf-days">00</b><span>Days</span></div>
+          <div class="bf-unit"><b id="bf-hours">00</b><span>Hours</span></div>
+          <div class="bf-unit"><b id="bf-mins">00</b><span>Mins</span></div>
+          <div class="bf-unit"><b id="bf-secs">00</b><span>Secs</span></div>
+        </div>
+        <a class="bf-cta" href="https://whop.com/checkout/plan_paYfw2JU7GnXc" target="_blank" rel="noopener">Buy Now — $49.99 →</a>
+        <p class="bf-ends" id="bf-ends">Ends <strong>Friday 27 Nov 2026, 11:59pm</strong> — then the price goes back to $79.</p>
+      </div>
+    </div>
     <div class="bar">★ Christmas gift alert ★ Only <strong>$49.99</strong> · Order now — delivery in <strong>6–11 days</strong>, in time for Christmas ★</div>
     <div class="ticker" aria-hidden="true"><div class="ticker-track"><span class="y">Rechargeable Portable Electric Lunch Box</span><span>★</span><span class="p">Most Popular Offer</span><span>★</span><span>Digital Display</span><span>★</span><span class="y">7200mAh Rechargeable Battery</span><span>★</span><span class="p">Adjustable Heat</span><span>★</span><span>900ml · 304 Stainless Steel Tray</span><span>★</span><span class="y">No Microwave Needed</span><span>★</span><span class="p">Hot Lunch Anywhere</span><span>★</span></div></div>
 
@@ -365,7 +400,9 @@
           <p class="buy-hook">Hot lunch. <span class="hl">Anywhere.</span> No microwave.</p>
           <p class="lede">Pack lunch in the morning. Heat it on battery power. Eat it warm at break time — no microwave, no outlet, no cord.</p>
           <div class="price-line">
+            <span class="price-was" aria-label="Was $79">$79</span>
             <span class="price">$49.99</span>
+            <span class="off-badge">37% OFF — Black Friday</span>
             <span class="sticker sticker-green" style="font-size:13px;padding:5px 11px">Best gift under $50</span>
             <span class="price-note">One payment. No subscription.</span>
           </div>
@@ -840,6 +877,31 @@
 
     <script>
       (function () {
+        /* Black Friday countdown — ends Fri 27 Nov 2026, 11:59pm (viewer's local time) */
+        var bfTarget = new Date(2026, 10, 27, 23, 59, 59);
+        var bfDays = document.getElementById('bf-days');
+        var bfHours = document.getElementById('bf-hours');
+        var bfMins = document.getElementById('bf-mins');
+        var bfSecs = document.getElementById('bf-secs');
+        var bfEnds = document.getElementById('bf-ends');
+        function bfPad(n) { return (n < 10 ? '0' : '') + n; }
+        function bfTick() {
+          if (!bfDays) return;
+          var diff = bfTarget.getTime() - Date.now();
+          if (diff <= 0) {
+            bfDays.textContent = '00'; bfHours.textContent = '00'; bfMins.textContent = '00'; bfSecs.textContent = '00';
+            if (bfEnds) bfEnds.innerHTML = '<strong>Black Friday has ended.</strong>';
+            return;
+          }
+          var s = Math.floor(diff / 1000);
+          bfDays.textContent = bfPad(Math.floor(s / 86400));
+          bfHours.textContent = bfPad(Math.floor(s % 86400 / 3600));
+          bfMins.textContent = bfPad(Math.floor(s % 3600 / 60));
+          bfSecs.textContent = bfPad(s % 60);
+          setTimeout(bfTick, 1000);
+        }
+        bfTick();
+
         var main = document.getElementById('gallery-main');
         var thumbs = document.querySelectorAll('.thumb');
         thumbs.forEach(function (t) {
